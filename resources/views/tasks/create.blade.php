@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>AJAX CRUD</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-light">
     <div class="container mt-5">
         <div class="row">
@@ -17,7 +19,8 @@
                         <form id="taskForm" method="POST" action="/tasks">
                             @csrf
                             <div class="input-group">
-                                <input type="text" id="task_name" class="form-control" placeholder="What needs to be done?">
+                                <input type="text" id="task_name" class="form-control"
+                                    placeholder="What needs to be done?">
                                 <button type="submit" class="btn btn-primary">Add Task</button>
                             </div>
                         </form>
@@ -25,14 +28,14 @@
                 </div>
 
                 <ul class="list-group mt-4" id="taskList">
-                    </ul>
+                </ul>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#taskForm').on('submit', function(e) {
                 e.preventDefault();
 
@@ -49,11 +52,8 @@
                     },
 
                     success: function(response) {
-                        console.log("Data received", response);
-
-                        $('#taskList').append('<li class="list-group-item">' + response.name + '</li>');
-
-                        $('#task_name').val('');
+                        alert("Task Added Successfully!");
+                        window.location.href = "/tasks"; 
                     },
 
                     error: function(xhr) {
@@ -64,4 +64,5 @@
         })
     </script>
 </body>
+
 </html>
